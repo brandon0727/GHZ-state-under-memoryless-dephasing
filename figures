@@ -4,7 +4,7 @@ from pathlib import Path
 from shutil import copy2
 from IPython.display import display, Image, Markdown
 
-# Detected from this notebook's savefig calls:
+
 FIG_FILES = [
     "ghz_fidelity.png",
     "ghz_fidelity_repeats.png",
@@ -24,7 +24,8 @@ fig_dir.mkdir(exist_ok=True)
 copied, missing = [], []
 for name in FIG_FILES:
     src = Path(name)
-    if src.exists():
+    if src
+.exists():
         dst = fig_dir / src.name
         if src.resolve() != dst.resolve():
             copy2(src, dst)
@@ -52,4 +53,5 @@ if missing:
     print("\n--- Missing (not found in the current directory) ---")
     for m in missing:
         print(m)
+
 
