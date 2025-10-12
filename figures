@@ -4,7 +4,6 @@ from pathlib import Path
 from shutil import copy2
 from IPython.display import display, Image, Markdown
 
-
 FIG_FILES = [
     "ghz_fidelity.png",
     "ghz_fidelity_repeats.png",
@@ -24,8 +23,7 @@ fig_dir.mkdir(exist_ok=True)
 copied, missing = [], []
 for name in FIG_FILES:
     src = Path(name)
-    if src
-.exists():
+    if src.exists():                      # <-- fixed (no newline in the middle)
         dst = fig_dir / src.name
         if src.resolve() != dst.resolve():
             copy2(src, dst)
@@ -33,7 +31,7 @@ for name in FIG_FILES:
     else:
         missing.append(name)
 
-# 3) Preview copied images
+# 3) Preview copied images inline
 for img in copied:
     display(Markdown(f"**{img.name}**"))
     display(Image(filename=str(img), width=720))
@@ -48,10 +46,15 @@ md_block = "\n".join(md_lines)
 print("\n--- README markdown (copy-paste) ---\n")
 print(md_block)
 
-# 5) Report any missing files
+# 5) List what's in ./figures and any missing files
+print("\n--- figures/ contents ---")
+for p in sorted(fig_dir.glob("*")):
+    print(p.name)
+
 if missing:
-    print("\n--- Missing (not found in the current directory) ---")
+    print("\n--- Missing (not found next to the notebook) ---")
     for m in missing:
         print(m)
+
 
 
