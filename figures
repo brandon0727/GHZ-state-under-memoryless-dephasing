@@ -1,1 +1,55 @@
+# Import figures saved by this notebook: collect → copy into ./figures → preview → print README markdown
+
+from pathlib import Path
+from shutil import copy2
+from IPython.display import display, Image, Markdown
+
+# Detected from this notebook's savefig calls:
+FIG_FILES = [
+    "ghz_fidelity.png",
+    "ghz_fidelity_repeats.png",
+    "ghz_fidelity_echo.png",
+    "ghz_fidelity_repeats_p0005.png",
+    "ghz_fidelity_repeats_p0020.png",
+    "ghz_fidelity_echo_p0005.png",
+    "ghz_size_comparison.png",
+    "ghz_log_negativity.png",
+]
+
+# 1) Ensure ./figures exists
+fig_dir = Path("figures")
+fig_dir.mkdir(exist_ok=True)
+
+# 2) Copy images that exist in the current directory into ./figures
+copied, missing = [], []
+for name in FIG_FILES:
+    src = Path(name)
+    if src.exists():
+        dst = fig_dir / src.name
+        if src.resolve() != dst.resolve():
+            copy2(src, dst)
+        copied.append(dst)
+    else:
+        missing.append(name)
+
+# 3) Preview copied images
+for img in copied:
+    display(Markdown(f"**{img.name}**"))
+    display(Image(filename=str(img), width=720))
+
+# 4) Print a README-ready Markdown block
+md_lines = ["## Figures", ""]
+for img in copied:
+    title = img.stem.replace("_", " ")
+    md_lines.append(f"![{title}](figures/{img.name})")
+md_block = "\n".join(md_lines)
+
+print("\n--- README markdown (copy-paste) ---\n")
+print(md_block)
+
+# 5) Report any missing files
+if missing:
+    print("\n--- Missing (not found in the current directory) ---")
+    for m in missing:
+        print(m)
 
