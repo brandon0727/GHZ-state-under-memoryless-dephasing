@@ -21,3 +21,6 @@ This project is a small, reproducible study of how a GHZ state loses coherence u
 ## License
 MIT
 
+## References
+1. M. A. Nielsen and I. L. Chuang, *Quantum Computation and Quantum Information*, Cambridge Univ. Press (2010).
+2. Qiskit Aer documentation for phase-damping channels.
