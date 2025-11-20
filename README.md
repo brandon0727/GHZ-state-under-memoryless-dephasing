@@ -22,5 +22,19 @@ This project is a small, reproducible study of how a GHZ state loses coherence u
 MIT
 
 ## References
-1. M. A. Nielsen and I. L. Chuang, *Quantum Computation and Quantum Information*, Cambridge Univ. Press (2010).
-2. Qiskit Aer documentation for phase-damping channels.
+
+[1] M. A. Nielsen and I. L. Chuang, *Quantum Computation and Quantum Information*,  
+Cambridge University Press (2010).
+
+[2] A. Peres, “Separability Criterion for Density Matrices,”  
+*Physical Review Letters* **77**, 1413 (1996).
+
+[3] M. Horodecki, P. Horodecki, and R. Horodecki,  
+“Separability of Mixed States: Necessary and Sufficient Conditions,”  
+*Physics Letters A* **223**, 1–8 (1996).
+
+[4] G. Vidal and R. F. Werner, “Computable Measure of Entanglement,”  
+*Physical Review A* **65**, 032314 (2002).
+
+[5] Qiskit Aer Documentation, *Noise Models and Density-Matrix Simulation*,  
+Available at: https://qiskit.org/ecosystem/aer/
